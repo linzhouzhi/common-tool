@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="../vender/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" charset="utf-8" />
+    <link href="../css/common.css" rel="stylesheet" charset="utf-8" />
+    <style>
+        a:link{text-decoration:none;}
+        a:visited{text-decoration:none;}
+        a:active{text-decoration:none;}
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index"><span class="glyphicon glyphicon-home"></span> Home</a>
+            </div><!-- .navbar-header -->
+        </div>
+    </div>
+</nav>
+<div class="clearfix nav-height"></div>
+<div class="container-fluid" style="margin-bottom: 20px;background-color: #fafbfc;border-bottom: 1px solid #e1e4e8;">
+    <div class="container">
+        <h1>Hello Tool</h1>
+        <p>分布式通用工具平台。。。。。</p>
+    </div>
+</div><!-- .container-fluid -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <a href="#">
+                <div class="thumbnail">
+                    <div class="thumbnail-title">webBench</div>
+                    <div class="caption">
+                        <h3>性能测试</h3>
+                        <p>利用webbench对resutful接口进行压力测试</p>
+                    </div>
+                </div>
+            </a>
+        </div><!-- .col-md-4 -->
+        <div class="col-sm-6 col-md-4">
+            <a href="/job/datax/addJob">
+                <div class="thumbnail">
+                    <div class="thumbnail-title">datax</div>
+                    <div class="caption">
+                        <h3>datax</h3>
+                        <p>数据转换工具，直接 hive mysql hbase 等不同源的数据</p>
+                    </div>
+                </div>
+            </a>
+        </div><!-- .col-md-4 -->
+        <div class="col-sm-6 col-md-4">
+            <a href="/job/restful/addJob">
+                <div class="thumbnail">
+                    <div class="thumbnail-title">restful</div>
+                    <div class="caption">
+                        <h3>生成restful接口</h3>
+                        <p>将job生成restful接口方便调用,
+                            优点一、就是restful的接口可以在任意的调度平台中使用，比如azkaban,crontab。
+                            优点二、可以方便统计查看运行状态报错等。</p>
+                    </div>
+                </div>
+            </a>
+        </div><!-- .col-md-4 -->
+    </div><!-- .row -->
+</div><!-- .container -->
+</body>
+<script src="../vender/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../vender/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="../../vender/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" charset="utf-8" />
+    <link href="../../css/common.css" rel="stylesheet" charset="utf-8" />
+    <style>
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/index"><span class="glyphicon glyphicon-home"></span> Home</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/job/datax/addJob">add job</a></li>
+                    <li><a href="/job/datax/list">list</a></li>
+                    <li><a href="/job/datax/history">history</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </div>
+</nav>
+<div class="clearfix nav-height"></div>
+<div th:switch="${jobtype}" class="container-fluid container-title">
+    　　<div class="container container-title-content" th:case="'datax'">
+    <h1>datax</h1>
+    <p>离线数据同步工具/平台，实现包括 MySQL、Oracle、HDFS、Hive、OceanBase、HBase、OTS、ODPS 等各种异构数据源之间高效的数据同步功能</p>
+</div>
+    　　<div class="container container-title-content" th:case="restful">
+    <h1>restful</h1>
+    <p>讲shell命令运行方式的job，改成url调用方式，方便对job运行状态观察统计，同时也适用于其它的调度平台，如Azkaban,crontab 等。</p>
+</div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">add job</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Job name</label>
+                    <input type="text" class="form-control input-width" placeholder="job name" />
+                </div><!-- .form-group -->
+                <div class="form-group">
+                    <label> 数据源类型</label>
+                    <div>
+                        <label class="radio-inline">
+                            <input class="input-tab" type="radio" name="type" aria-controls="Mysql">Mysql</input>
+                        </label>
+                        <label class="radio-inline">
+                            <input class="input-tab" type="radio" name="type"  aria-controls="Oracle">Oracle</input>
+                        </label>
+                        <label class="radio-inline">
+                            <input class="input-tab" type="radio" name="type"  aria-controls="SqlServer">SqlServer</input>
+                        </label>
+                        <label class="radio-inline">
+                            <input class="input-tab" type="radio" name="type"  aria-controls="Hbase0.94">Hbase0.94</input>
+                        </label>
+                        <label class="radio-inline">
+                            <input class="input-tab" type="radio" name="type"  aria-controls="Hbase1.1">Hbase1.1</input>
+                        </label>
+                        <label class="radio-inline">
+                            <input class="input-tab" type="radio" name="type"  aria-controls="MongoDB">MongoDB</input>
+                        </label>
+                        <label class="radio-inline">
+                            <input class="input-tab" type="radio" name="type"  aria-controls="HDFS">HDFS</input>
+                        </label>
+
+                        <ul id="role-type" class="nav nav-tabs hidden" role="tablist">
+                            <li role="presentation" class="active"><a href="#Mysql" aria-controls="Mysql" role="tab" data-toggle="tab">Home</a></li>
+                            <li role="presentation"><a href="#Oracle" aria-controls="Oracle" role="tab" data-toggle="tab">Profile</a></li>
+                            <li role="presentation"><a href="#SqlServer" aria-controls="SqlServer" role="tab" data-toggle="tab">Home</a></li>
+                            <li role="presentation"><a href="#Hbase094" aria-controls="Hbase0.94" role="tab" data-toggle="tab">Profile</a></li>
+                            <li role="presentation"><a href="#Hbase11" aria-controls="Hbase1.1" role="tab" data-toggle="tab">Home</a></li>
+                            <li role="presentation"><a href="#MongoDB" aria-controls="MongoDB" role="tab" data-toggle="tab">Profile</a></li>
+                            <li role="presentation"><a href="#HDFS" aria-controls="HDFS" role="tab" data-toggle="tab">Profile</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="Mysql">
+                                <div class="form-group">
+                                    <label> 添加 url</label>
+                                    <input type="text" name="ping_url" class="form-control" placeholder="http://127.0.0.1:80"></input>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="Oracle">暂不支持Oracle</div>
+                            <div role="tabpanel" class="tab-pane" id="SqlServer">暂不支持SqlServer</div>
+                            <div role="tabpanel" class="tab-pane" id="Hbase094">暂不支持base0.94</div>
+                            <div role="tabpanel" class="tab-pane" id="Hbase11">暂不支持Hbase1.1</div>
+                            <div role="tabpanel" class="tab-pane" id="MongoDB">暂不支持MongoDB</div>
+                            <div role="tabpanel" class="tab-pane" id="HDFS">暂不支持HDFS</div>
+                        </div>
+                    </div>
+                </div><!-- .form-group -->
+                <div class="form-group">
+                    <label>转换成数据类型</label>
+                    <div>
+                        <label class="radio-inline">
+                            <input class="input-tab" type="radio" name="type2" aria-controls="Mysql2">Mysql</input>
+                        </label>
+                        <label class="radio-inline">
+                            <input class="input-tab" type="radio" name="type2"  aria-controls="Oracle2">Oracle</input>
+                        </label>
+                        <label class="radio-inline">
+                            <input class="input-tab" type="radio" name="type2"  aria-controls="SqlServer2">SqlServer</input>
+                        </label>
+                        <label class="radio-inline">
+                            <input class="input-tab" type="radio" name="type2"  aria-controls="Hbase0.942">Hbase0.94</input>
+                        </label>
+                        <label class="radio-inline">
+                            <input class="input-tab" type="radio" name="type2"  aria-controls="Hbase1.12">Hbase1.1</input>
+                        </label>
+                        <label class="radio-inline">
+                            <input class="input-tab" type="radio" name="type2"  aria-controls="MongoDB2">MongoDB</input>
+                        </label>
+                        <label class="radio-inline">
+                            <input class="input-tab" type="radio" name="type2"  aria-controls="HDFS2">HDFS</input>
+                        </label>
+
+                        <ul id="role-type2" class="nav nav-tabs hidden" role="tablist">
+                            <li role="presentation" class="active"><a href="#Mysql2" aria-controls="Mysql2" role="tab" data-toggle="tab">Home</a></li>
+                            <li role="presentation"><a href="#Oracle2" aria-controls="Oracle2" role="tab" data-toggle="tab">Profile</a></li>
+                            <li role="presentation"><a href="#SqlServer2" aria-controls="SqlServer2" role="tab" data-toggle="tab">Home</a></li>
+                            <li role="presentation"><a href="#Hbase0942" aria-controls="Hbase0.942" role="tab" data-toggle="tab">Profile</a></li>
+                            <li role="presentation"><a href="#Hbase112" aria-controls="Hbase1.12" role="tab" data-toggle="tab">Home</a></li>
+                            <li role="presentation"><a href="#MongoDB2" aria-controls="MongoDB2" role="tab" data-toggle="tab">Profile</a></li>
+                            <li role="presentation"><a href="#HDFS2" aria-controls="HDFS2" role="tab" data-toggle="tab">Profile</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="Mysql2">
+                                <div class="form-group">
+                                    <label> 添加 url</label>
+                                    <input type="text" name="ping_url" class="form-control" placeholder="http://127.0.0.1:80"></input>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="Oracle2">暂不支持Oracle</div>
+                            <div role="tabpanel" class="tab-pane" id="SqlServer2">暂不支持SqlServer</div>
+                            <div role="tabpanel" class="tab-pane" id="Hbase0942">暂不支持base0.94</div>
+                            <div role="tabpanel" class="tab-pane" id="Hbase112">暂不支持Hbase1.1</div>
+                            <div role="tabpanel" class="tab-pane" id="MongoDB2">暂不支持MongoDB</div>
+                            <div role="tabpanel" class="tab-pane" id="HDFS2">暂不支持HDFS</div>
+                        </div>
+                    </div>
+                </div><!-- .form-group -->
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div><!-- .panel -->
+    </div><!-- .row -->
+</div><!-- .container -->
+</body>
+<script src="../../vender/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../../vender/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script>
+    $("input[aria-controls='Mysql']").trigger("click");
+    $("input[aria-controls='Mysql2']").trigger("click");
+    $(".input-tab").click(function () {
+        var type = $(this).attr("aria-controls");
+        $("a[aria-controls='" + type + "']").click();
+    });
+</script>
+</html>

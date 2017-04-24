@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="../../vender/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" charset="utf-8" />
+    <link href="../../css/common.css" rel="stylesheet" charset="utf-8" />
+    <style>
+        .param_black_div{
+            width:2%;
+            height: 2px;
+            float: left;
+        }
+        .right-button{
+            width: 8%;
+            float: left;
+        }
+        .input-width{
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/index"><span class="glyphicon glyphicon-home"></span> Home</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/job/restful/addJob">add job</a></li>
+                    <li><a href="/job/restful/list">list</a></li>
+                    <li><a href="/job/restful/history">history</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </div>
+</nav>
+<div class="clearfix nav-height"></div>
+<div th:switch="${jobtype}" class="container-fluid container-title">
+    　　<div class="container container-title-content" th:case="'datax'">
+    <h1>datax</h1>
+    <p>离线数据同步工具/平台，实现包括 MySQL、Oracle、HDFS、Hive、OceanBase、HBase、OTS、ODPS 等各种异构数据源之间高效的数据同步功能</p>
+</div>
+    　　<div class="container container-title-content" th:case="restful">
+    <h1>restful</h1>
+    <p>讲shell命令运行方式的job，改成url调用方式，方便对job运行状态观察统计，同时也适用于其它的调度平台，如Azkaban,crontab 等。</p>
+</div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">add job</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Job name</label>
+                    <input type="text" class="form-control input-width" placeholder="job name" />
+                </div><!-- .form-group -->
+                <div class="form-group">
+                    <label>选择服务器</label>
+                    <div class="form-group">
+                        <div class="form-group" style="width: 40%; float: left">
+                            <input type="text" name="host" class="form-control" placeholder="host" />
+                        </div>
+                        <div class="param_black_div"></div>
+                        <div class="form-group" style="width: 23%; float: left">
+                            <input type="text" name="username" class="form-control" placeholder="username" />
+                        </div>
+                        <div class="param_black_div"></div>
+                        <div class="form-group" style="width: 23%; float: left">
+                            <input type="text" name="password" class="form-control" placeholder="password" />
+                        </div>
+                        <div class="param_black_div"></div>
+                        <div class="form-group right-button">
+                            <button type="submit" class="btn btn-default">test</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <label>Job run commond</label>
+                    <input type="text" class="form-control input-width" placeholder="/opt/app/install/start.sh" />
+                    <p class="help-block">参数不用填，生成url后直接跟着q参数就可以，如：http://127.0.0.1:8080/restful/list/id=123&amp;q=param1,param2</p>
+                </div><!-- .form-group -->
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div><!-- .panel -->
+    </div><!-- .row -->
+</div><!-- .container -->
+</body>
+<script src="../../vender/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../../vender/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script>
+
+</script>
+</html>
